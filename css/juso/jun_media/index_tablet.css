@@ -1,0 +1,166 @@
+@media (max-width: 768px) {
+  html{
+    font-size: 10px;
+  }
+  #wrap-container > #testWrapper {
+    width: 100%;
+  }
+  #wrap-container > #testWrapper > #carousel-container > #slider > .carousels {
+    max-width: 718px;
+    max-height: 245px;
+  }
+  #wrap-container > #testWrapper > #carousel-container > #indicateBox > #indicate_contents {
+    top: 50px;
+    left: 25px;
+  }
+  #btnNew{
+    width: 276px;
+    height: 26px;
+  }
+
+  #wrap-container > #testWrapper > #carousel-container > #indicateBox > #btnGroup {
+    top: 170px;
+    left: 25px;
+  }
+  #wrap-container > #testWrapper > #carousel-container {
+    max-width: 718px;
+    height: 245px;
+  }
+  #wrap-container > #testWrapper > #main-container {
+    width: 100%;
+  }
+  #main-container > #jun_main {
+    width: 100%;
+  }
+
+  /*새로운 프로젝트*/
+  #jun_main > #newProject > #new-cards-box {
+    width: 100%;
+  }
+  #jun_main > #newProject > #new-cards-box > .cards {
+    grid-template-columns: repeat(4, minmax(180px, auto));
+  }
+  .cards_contents {
+    width: 151px;
+  }
+  .cards_contents > a > .p_thumnail > img {
+    max-width: 151px;
+    min-width: 151px;
+    max-height: 214px;
+    min-height: 214px;
+  }
+
+  .main-titles,
+  .main-subTitles {
+    margin-left: 17px;
+    z-index: 5;
+  }
+  ul.tabs {
+    margin: 0 15px 0 0;
+  }
+
+ 
+  /*추천 프로젝트*/
+  #jun_main > #recommendProject > #recommend-cards-box {
+    width: 100%;
+  }
+  #jun_main > #recommendProject > #recommend-cards-box > .cards {
+    grid-template-columns: repeat(4, minmax(180px, auto));
+  }
+
+  .cards_contents > a > .p_thumnail > img {
+    max-width: 150px;
+    min-width: 150px;
+    max-height: 214px;
+    min-height: 214px;
+  }
+  .cards_contents > a > .p_infoBox {
+    height: 35px;
+  }
+
+
+  .cards_contents > a > .p_infoBox > .p_nameRateBox > .d_rate {
+    
+    margin: -2px 5px 0 0;
+  }
+  #btnRecom {
+    width: 276px;
+    height: 26px;
+    
+  }
+
+  /*카테고리 프로젝트*/
+  #jun_main > #categoryProject > .mainCards {
+    width: 100%;
+  }
+  #jun_main > #categoryProject > #category-cards > .tab_container > .tab_content {
+    width: 100%;
+  }
+  #jun_main > #categoryProject > #category-cards > .tab_container > .tab_content > .cards {
+    grid-template-columns: repeat(4, minmax(180px, auto));
+  }
+  .cards_contents > a > .p_thumnail > img {
+    max-width: 150px;
+    min-width: 150px;
+    max-height: 214px;
+    min-height: 214px;
+  }
+  .btnCtg {
+    width: 276px;
+    height: 26px;
+    
+  }
+
+  /* 보류_재영 */
+  /* #categoryTab {
+    flex-direction: column;
+  }
+  #categoryTab > ul {
+    margin-left: 17px;
+  } */
+
+
+  /*파란색 배너*/
+  #funwareBanner {
+    max-width: 96%;
+    height: 97px;
+    margin-left: 17px;
+    width: auto;
+  }
+  #funwareBanner > #b_left {
+    height: auto;
+  }
+
+  #funwareBanner > #b_right {
+    width: 142px;
+    height: 30px;
+  
+  }
+  /*공지사항*/
+  #notice > #notice-cards {
+    max-width: 717px;
+    margin-left: 17px;
+    grid-template-columns: repeat(1, minmax(320px, auto));
+  }
+  #notice > #notice-cards > .notice_box {
+    width: auto;
+  }
+  #notice > #notice-cards > .notice_box > .noticeRight {
+    width: 580px;
+  }
+  .noticeTitle > p {
+    
+  }
+  /*footer*/
+  #footer-container > .footer-contents {
+    width: 718px;
+    padding: 13px 30px 13px 50px;
+  }
+  #footer-container > .footer-contents > br {
+    display: none;
+  }
+
+  #footer-container > .footer-contents > .footer-contentBox {
+    width: 100%;
+  }
+}

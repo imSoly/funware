@@ -1,0 +1,216 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <title>main</title>
+
+    <style type="text/css">
+      :root{
+        --mainColor: #2075ec;
+        --width: 1280px;
+      }
+
+      *{
+        margin:0;
+        padding:0;
+      }
+
+      #wrap-container{
+        /* background-color: grey; */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #carousel-container{
+        /* background-color: red; */
+        position: relative;
+        width: var(--width);
+        height: 455px;
+        margin: 0 auto;
+        padding:0;
+        overflow-x:hidden;
+      }
+      #slider{
+        /* width: 4000px; */
+        height:auto;
+        background-color: red;
+        margin:0;
+        padding:0;
+        /* overflow-x:hidden; */
+        /* float:left; */
+      }
+      .slider_item{
+        display: table;
+        width: var(--width);
+        float:left;
+      }
+      #indicateBox{
+        margin:0;
+        padding:0;
+        position: absolute;
+        z-index: 1;
+        opacity: .99;
+        background-color: rgba(0, 0, 0, 0.7);
+        height: 100%;
+        width: 33%;
+        right: 0px;
+        color: white;
+      }
+      #indicate_contents{
+        position: absolute;
+        left: 70px;
+        top: 184px;
+        display: flex;
+        flex-direction: column;
+      }
+      #slide_title{
+        display: flex;
+        position: relative;
+      }
+      .explain_item{display: none; font-size: 20px; font-weight: bold;}
+      .title_item{display: none; font-size: 35px; font-weight: bold;}
+
+      #indicate_showing_title{display: block;}
+      #indicate_showing_explan{display: block;}
+      #btnGroup{
+        position: absolute;
+        left: 75px;
+        top: 350px;
+      }
+      .c_btn{
+        z-index: 1;
+        border: solid 1px #fff;
+        border-radius: 70%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+    <div id="wrap-container">
+
+<!-- carousel -->
+<div id="carousel-container">
+        <div id="slider">
+          <div id="carousel 1" class="slider_item"><img src="img/carousel_1.png"></div>
+          <div id="carousel 2" class="slider_item"><img src="img/carousel_2.png"></div>
+          <div id="carousel 3" class="slider_item"><img src="img/carousel_3.png"></div>
+        </div>
+        <div id="indicateBox">
+          <div id="indicate_contents">
+            <div id="slide_title">
+              <p class="title_item">우리 숲을 살려요</p>
+              <p class="title_item">title 2</p>
+              <p class="title_item">title 3</p>
+            </div>
+            <div id="slide_explan">
+              <p class="explain_item">환경보호를 할수있게<br>우리의 그린 프로젝트를 도와주세요</p>
+              <p class="explain_item">explan 2</p>
+              <p class="explain_item">explan 3</p>
+            </div>
+          </div>
+          <div id="btnGroup">
+            <img src="img/prev.png" id="c_btn1" class="c_btn">
+            <img src="img/next.png" id="c_btn2" class="c_btn">
+            <span class="currentSlideNum">a / b</span>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      const currentSlideNum = document.querySelector(".currentSlideNum");
+      const slider = document.querySelector("#slider");
+      const slider_item = document.querySelectorAll(".slider_item");
+      const slider_title = document.querySelectorAll(".title_item");
+      const slider_explain = document.querySelectorAll(".explain_item");
+      const slideLen = slider_item.length;
+      const slideWidth = 1281;
+      const slideSpeed = 300;
+      const startNum = 0;
+      let curIndex = 0;
+      
+      slider.style.width = slideWidth * (slideLen+2) +"px";
+      
+      let firstChild = slider.firstElementChild;
+      let lastChild = slider.lastElementChild;
+      let clonedFirst = firstChild.cloneNode(true);
+      let clonedLast = lastChild.cloneNode(true);
+
+      slider.appendChild(clonedFirst);
+      slider.insertBefore(clonedLast, slider.firstElementChild);
+
+      slider.style.transform = "translate3d(-" + (slideWidth * (startNum + 1)) +"px, 0px, 0px)";
+
+      
+      
+      currentSlideNum.innerHTML = `${curIndex + 1} / ${slideLen}`;
+
+      const prevBtn = document.querySelector("#c_btn1");
+      const nextBtn = document.querySelector("#c_btn2");
+
+      // 코드 정리
+      let setSliderTextStyle = (title, explain, action) => {
+          title.style.display = `${action}`;
+          explain.style.display = `${action}`;
+      }
+
+      setSliderTextStyle(slider_title[curIndex],slider_explain[curIndex],"block");
+
+      nextBtn.addEventListener('click', () => {
+        if(curIndex <= slideLen -1){
+          setSliderTextStyle(slider_title[curIndex],slider_explain[curIndex],"none");
+          slider.style.transition = `${slideSpeed}ms`;
+          slider.style.transform = `translate3d(-${(slideWidth * (curIndex+2))}px, 0px, 0px)`;
+        }                           
+        if(curIndex === slideLen -1){
+          setTimeout(()=>{
+            slider.style.transition = "0ms";
+            slider.style.transform = `translate3d(-${slideWidth}px, 0px, 0px)`;
+          }, slideSpeed)
+          curIndex = -1;
+        }
+
+        ++curIndex;
+        currentSlideNum.innerHTML = `${curIndex + 1} / ${slideLen}`;
+        setSliderTextStyle(slider_title[curIndex],slider_explain[curIndex],"block");
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if(curIndex >= 0){
+          setSliderTextStyle(slider_title[curIndex],slider_explain[curIndex],"none");
+          slider.style.transition = `${slideSpeed}ms`;
+          slider.style.transform = `translate3d(-${(slideWidth * curIndex)}px, 0px, 0px)`;
+        }
+        if(curIndex === 0){
+          setTimeout(()=>{
+            slider.style.transition = "0ms";
+            slider.style.transform = `translate3d(-${(slideWidth * slideLen)}px, 0px, 0px)`;
+          }, slideSpeed)
+          curIndex = slideLen;
+        }
+
+        --curIndex;
+        currentSlideNum.innerHTML = `${curIndex + 1} / ${slideLen}`;
+        setSliderTextStyle(slider_title[curIndex],slider_explain[curIndex],"block");
+      });
+
+    </script>
+  </body>
+</html>

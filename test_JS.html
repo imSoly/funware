@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+      #wrap-container{
+        /* background-color: gray; */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        /* margin: 0 auto; */
+      }
+      #carousel-container{
+        position: relative;
+        width: 1280px;
+        margin: 0 auto;
+      }
+      #slider{
+        width: 100%;
+      }
+      .slider_item{
+        width: 100%;
+        position: absolute;
+        z-index: 0;
+        /* opacity: 0; */
+      }
+      .showing{
+        z-index: 1;
+        opacity: 1;
+        /* transform: none; */
+      }
+      #indicateBox{
+        position: absolute;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 455px;
+        width: 33%;
+        right: 0px;
+        color: white;
+      }
+      #indicate_contents{
+        display: flex;
+        flex-direction: column;
+        /* width: calc(100% - 140px); */
+        /* margin: 70px; */
+      }
+      #slide_title{
+        display: flex;
+        position: relative;
+      }
+      .explan_item{
+        display: none;
+      }
+      .title_item{
+        display: none;
+      }
+      #indicate_showing_title{
+        display: block;
+      }
+      #indicate_showing_explan{
+        display: block;
+      }
+      /* .indicate_showing{} */
+      #slide_explan{
+        position: relative;
+      }
+      #btnGroup{
+        /* position: absolute;*/
+        /* top : 50%; */
+      }
+      .title_item{
+        /* position: absolute; */
+      }
+      .c_btn{
+        z-index: 1;
+        border: solid 1px #fff;
+        border-radius: 70%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      #main-container{
+        background-color: AliceBlue;
+        width: 1280px;
+        height: 1000px;
+        margin: 0 auto;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div id="wrap-container">
+
+      <div id="carousel-container">
+        <div id="slider">
+          <div id="carousel 1" class="slider_item"><img src="img/carousel_1.png"></div>
+          <div id="carousel 2" class="slider_item"><img src="img/carousel_2.png"></div>
+          <div id="carousel 3" class="slider_item"><img src="img/carousel_3.png"></div>
+        </div>
+        <div id="indicateBox">
+          <div id="indicate_contents">
+            <div id="slide_title">
+              <h2 class="title_item">우리 숲을 살려요</h2>
+              <h2 class="title_item">title 2</h2>
+              <h2 class="title_item">title 3</h2>
+            </div>
+            <div id="slide_explan">
+              <h3 class="explan_item">환경보호를 할수있게<br>우리의 그린 프로젝트를 도와주세요</h3>
+              <h3 class="explan_item">explan 2</h3>
+              <h3 class="explan_item">explan 3</h3>
+            </div>
+            <div id="btnGroup">
+              <img src="img/prev.png" id="c_btn1" class="c_btn">
+              <img src="img/next.png" id="c_btn2" class="c_btn">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="main-container"></div>
+    </div>
+
+    <script>
+      const SHOWING_CALSS = "showing";
+      const TITLE_SHOWING_CALSS = "indicate_showing_title";
+      const EXPLAN_SHOWING_CALSS = "indicate_showing_explan";
+      // 첫번째 엘리먼트 지정
+      const firstSlide = document.querySelector(".slider_item:first-child");
+      const firstTitle = document.querySelector(".title_item:first-child");
+      const firstExplan = document.querySelector(".explan_item:first-child");
+
+      function slide(){
+        // showing 클래스를 가진 엘리먼트 찾기
+        const currentSlide = document.querySelector(`.${SHOWING_CALSS}`);
+        const currentTitle = document.querySelector(`#${TITLE_SHOWING_CALSS}`);
+        const currentExplan = document.querySelector(`#${EXPLAN_SHOWING_CALSS}`);
+        // 있으면
+        if(currentSlide){
+          // currentSlide의 showing 클래스 삭제
+          currentSlide.classList.remove(SHOWING_CALSS);
+          // 다음 엘리먼트에 클래스 추가
+          const nextSlide = currentSlide.nextElementSibling;
+
+          currentTitle.id="";
+          currentExplan.id="";
+          // currentTitle.classList.remove(TITLE_SHOWING_CALSS);
+          // currentTitle.style.diplay="none";
+          const nextTitle = currentTitle.nextElementSibling;
+          const nextExplan = currentExplan.nextElementSibling;
+          // 다음 엘리먼트가 있으면
+          if(nextSlide){
+            // nextSlide에 showing 클래스 추가
+            nextSlide.classList.add(SHOWING_CALSS);
+
+            nextTitle.id="indicate_showing_title";
+            nextExplan.id="indicate_showing_explan";
+            // nextTitle.classList.add(TITLE_SHOWING_CALSS);
+            // nextTitle.style.diplay="block";
+          }else{
+            // 마지막 element일 때. 첫번째에 showing 부여
+            firstSlide.classList.add(SHOWING_CALSS);
+            firstTitle.id="indicate_showing_title";
+            firstExplan.id="indicate_showing_explan";
+            // firstTitle.style.diplay="block";
+          }
+        }else{
+          // 페이지 시작점. showing 클래스가 없으니 첫번째에 showing 부여
+          firstSlide.classList.add(SHOWING_CALSS);
+          firstTitle.id="indicate_showing_title";
+          firstExplan.id="indicate_showing_explan";
+          // firstTitle.classList.add(TITLE_SHOWING_CALSS);
+          // firstTitle.style.diplay="block";
+        }
+      }
+      slide();
+      setInterval(slide, 3000);
+    </script>
+  </body>
+</html>

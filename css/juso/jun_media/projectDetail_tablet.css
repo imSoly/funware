@@ -1,0 +1,163 @@
+@media (max-width: 768px) {
+  html{
+    font-size: 10px;
+    width: 100%;
+  }
+ 
+
+  /*제품 인트로*/
+
+  #wrap_introStock{
+    width: 94%;
+    margin-top: 25px;
+  }
+  #introduction>#intro_left{
+    width: 423px;
+    height: 245px;
+  }
+  #introduction>#intro_right{
+    width: 250px;
+    height: 100%;
+    padding-left:20px;
+  }
+  #introduction
+  >#intro_right
+  >#p_name{
+    font-size: 14px;
+  }
+  #intro_right>div>
+  #progressBar{
+    height: 7px;
+  }
+  #intro_right>div>p{
+    letter-spacing: 0;
+    font-size: 20px;
+  }
+  #intro_btnGroup{
+    height: auto;
+    
+  }
+  #intro_btnGroup>.reveal{
+    position: absolute;
+    top: 300px;
+    left: 80%;
+  }
+  #btnInvest{
+    width: 137px;
+    height: 34px;
+  }
+  #btnLike{
+    width: 34px;
+    height: 34px;
+  }
+  #btnLike>img{
+    width: 18px;
+    height: 17px;
+  }
+  #btnShare{
+    width: 34px;
+    height: 34px;
+  }
+  #btnShare>img{
+    width: 18px;
+    height: 17px;
+  }
+
+  /*파란색 배너*/
+  #wrap_stock{
+    max-width: 94%;
+  }
+  #stockInfo{
+    padding: 16px 60px;
+    margin-top: 40px;
+  }
+  #stockInfo>#btnStock{
+    width: 112px;
+    height: 32px;
+  }
+  /*본문*/
+  #storyContainer{
+    max-width: 94%;
+  }
+  #storyContainer>#s_left{
+    max-width: 70%;
+    padding: 23px 60px;
+    padding-top: 60px;
+  }
+  #s_left>.p_imgs>img{
+    width: 320px;
+  height: 178px;
+  }
+  #storyContainer>#s_right{
+    max-width: 30%;
+    margin-left: 20px;
+  }
+  #etp_infoBox{
+    width:100%;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+  #ent_name{
+    margin-top:0px;
+    margin-bottom: 10px;
+  }
+  #ent_name>img{
+    width: 24px;
+    height: 24px;
+  }
+  #etp_infoBox>hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  #ent_pop{
+    width: 700px;
+    left: calc(50% - 350px);
+    height: auto;
+    padding: 40px;
+  }
+  #ent_pop>textarea{
+    margin-bottom: 15px;
+    padding: 13px;
+  }
+  #btnEnt{
+    width: 100%;
+    height: 26px;
+  }
+  #s_right>.s_rightBoxs{
+    width: 100%;
+  }
+
+  /*추천프로젝트*/
+  #p_recomContainer{
+    width: 100%;
+  }
+  #p_recomContainer >.cards{
+    grid-template-columns: repeat(4, minmax(180px, auto));
+  }
+  .cards_contents {
+    width: 151px;
+  }
+  .cards_contents > a > .p_thumnail > img {
+    max-width: 151px;
+    min-width: 151px;
+    max-height: 214px;
+    min-height: 214px;
+  }
+
+
+  .cards_contents > a > .p_infoBox {
+    height: 35px;
+  }
+
+  #recomSubTitle{
+    margin-bottom: 20px;
+    letter-spacing: 0;
+  }
+  .footer-contents{
+    padding: 13px 30px 13px 50px;
+  }
+  .footer-contentBox{
+    max-width: 768px;
+    width: auto;
+  }
+}
